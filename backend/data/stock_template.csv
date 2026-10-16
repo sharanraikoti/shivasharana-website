@@ -1,0 +1,2 @@
+company,medicine,strength,dosage_form,unit,pack_size,reorder_level,batch_no,expiry_date,quantity,sale_price,mrp,purchase_price
+Example Company Name,Paracetamol,500 mg,Tablet,strips,10 x 10,20,AB1234,2027-08-31,50,18.50,20.00,14.00

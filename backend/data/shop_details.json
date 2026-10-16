@@ -1,0 +1,19 @@
+{
+  "name": "Shivasharana Distributor",
+  "tagline": "Pharmaceutical distributor in Raichur",
+  "description": null,
+  "address_line1": "1st Floor, Shop No. 3, Santhoshi Homtel",
+  "address_line2": "Near Vishal Mart",
+  "city": "Raichur",
+  "state": "Karnataka",
+  "pincode": "584101",
+  "phone": "9482460666",
+  "email": "shivasharanadistributor@gmail.com",
+  "opening_hours": null,
+  "drug_licence_no": null,
+  "gstin": null,
+  "logo_url": null,
+  "show_quantities": true,
+  "show_batches": false,
+  "is_sample": false
+}

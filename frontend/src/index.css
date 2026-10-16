@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { -webkit-text-size-adjust: 100%; }
+body { @apply bg-paper font-sans text-ink antialiased; }
+input[type="number"] { -moz-appearance: textfield; }
+
+@media print {
+  @page { margin: 12mm; }
+  body { background: #fff; }
+  header, footer, nav { display: none !important; }
+  /* When a bill dialog is open, print only the dialog */
+  body:has(> .print-modal) #root { display: none !important; }
+}
