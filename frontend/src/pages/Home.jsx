@@ -92,7 +92,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="flex items-end justify-between gap-4">
-          <h2 className="text-xl font-semibold text-ink">Companies we supply</h2>
+          <h2 className="text-xl font-semibold text-ink">Company-Wise Stock</h2>
           <Link to="/companies" className="text-sm font-medium text-brand-700 hover:underline">
             See all{companies.data ? ` ${companies.data.total}` : ""}
           </Link>
