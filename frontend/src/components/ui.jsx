@@ -9,7 +9,7 @@ export function Button({ variant = "primary", size = "md", className, as: As = "
     "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 disabled:cursor-not-allowed disabled:opacity-50";
   const sizes = { sm: "h-8 px-3 text-sm", md: "h-10 px-4 text-[15px]", lg: "h-12 px-6 text-base" };
   const variants = {
-    primary: "bg-brand-600 text-white hover:bg-brand-700",
+    primary: "bg-gradient-to-r from-brand-700 to-brand-500 text-white shadow-sm hover:from-brand-800 hover:to-brand-600",
     secondary: "bg-white text-ink ring-1 ring-inset ring-line hover:bg-paper",
     ghost: "text-brand-700 hover:bg-brand-50",
     danger: "bg-white text-red-700 ring-1 ring-inset ring-red-200 hover:bg-red-50",
@@ -63,7 +63,8 @@ export const SearchInput = forwardRef(function SearchInput({ value, onChange, pl
 
 export function StatusBadge({ status }) {
   return (
-    <span className={cx("inline-flex whitespace-nowrap rounded px-2 py-0.5 text-xs font-semibold ring-1 ring-inset", STATUS_STYLE[status])}>
+    <span className={cx("inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset", STATUS_STYLE[status])}>
+      <span className="h-1.5 w-1.5 rounded-full bg-current opacity-70" aria-hidden="true" />
       {status}
     </span>
   );

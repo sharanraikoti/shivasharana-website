@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ButtonLink, Empty, ErrorBox, Loading, Pagination, SampleBadge, SearchInput, inputClass } from "../components/ui";
 import { useApi, useDebounced, useTitle } from "../lib/hooks";
+import { PageHero } from "../components/Layout";
+import { tintFor } from "../lib/brand";
 
 const PAGE_SIZE = 24;
 
@@ -33,11 +35,12 @@ export default function Companies() {
   const { data, error, loading, reload } = useApi(`/api/companies?${query}`);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-2xl font-bold text-ink sm:text-3xl">Pharmaceutical companies</h1>
-      <p className="mt-2 text-ink-soft">Choose a company to see the medicines we stock from it.</p>
-
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+    <>
+    <PageHero eyebrow="Our stock sources" title="Pharmaceutical companies">
+      Choose a company to see the medicines we stock from it.
+    </PageHero>
+    <div className="mx-auto max-w-6xl px-4 pb-12">
+      <div className="relative -mt-6 flex flex-col gap-3 rounded-2xl bg-white p-3 shadow-lift sm:flex-row">
         <SearchInput value={q} onChange={setQ} placeholder="Search by company name" className="flex-1" />
         <label className="flex items-center gap-2 text-sm text-ink-soft">
           <span className="whitespace-nowrap">Sort</span>
@@ -78,17 +81,18 @@ export default function Companies() {
         )}
       </div>
     </div>
+    </>
   );
 }
 
 function CompanyCard({ c }) {
   return (
-    <article className="flex h-full flex-col rounded-lg border border-line bg-white p-5">
-      <div className="flex items-start gap-3">
+    <article className="flex h-full flex-col rounded-2xl border border-line bg-white p-5 shadow-card transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-lift">
+      <div className="mb-4 flex items-start gap-3">
         {c.logo_url ? (
           <img src={c.logo_url} alt="" className="h-11 w-11 shrink-0 rounded object-contain ring-1 ring-line" />
         ) : (
-          <span aria-hidden="true" className="flex h-11 w-11 shrink-0 items-center justify-center rounded bg-brand-50 text-lg font-semibold text-brand-700">
+          <span aria-hidden="true" className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-xl font-bold ${tintFor(c.name)}`}>
             {c.name.trim()[0]?.toUpperCase()}
           </span>
         )}
@@ -101,18 +105,12 @@ function CompanyCard({ c }) {
           {c.is_sample && <div className="mt-1"><SampleBadge /></div>}
         </div>
       </div>
-      <dl className="mt-4 grid grid-cols-2 gap-2 text-sm">
-        <div className="rounded-md bg-paper px-3 py-2">
-          <dt className="text-ink-mute">Products</dt>
-          <dd className="text-lg font-semibold text-ink">{c.product_count}</dd>
-        </div>
-        <div className="rounded-md bg-paper px-3 py-2">
-          <dt className="text-ink-mute">In stock</dt>
-          <dd className="text-lg font-semibold text-ink">{c.in_stock_count}</dd>
-        </div>
-      </dl>
-      <ButtonLink to={`/companies/${c.slug}`} variant="secondary" className="mt-4 w-full" aria-label={`View stock for ${c.name}`}>
-        View Stock
+      <p className="mt-4 inline-flex w-fit items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-800">
+        <span className="h-2 w-2 rounded-full bg-aqua-500" aria-hidden="true" />
+        {c.product_count} {c.product_count === 1 ? "product" : "products"}
+      </p>
+      <ButtonLink to={`/companies/${c.slug}`} className="mt-auto w-full" aria-label={`View products from ${c.name}`}>
+        View Products
       </ButtonLink>
     </article>
   );

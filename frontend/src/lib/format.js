@@ -1,11 +1,11 @@
 export const STATUSES = ["In Stock", "Low Stock", "Near Expiry", "Out of Stock", "Expired"];
 
 export const STATUS_STYLE = {
-  "In Stock": "bg-emerald-50 text-emerald-800 ring-emerald-200",
-  "Low Stock": "bg-amber-50 text-amber-900 ring-amber-200",
-  "Near Expiry": "bg-orange-50 text-orange-900 ring-orange-200",
-  "Out of Stock": "bg-slate-100 text-slate-700 ring-slate-300",
-  Expired: "bg-red-50 text-red-800 ring-red-200",
+  "In Stock": "bg-emerald-100 text-emerald-800 ring-emerald-300",
+  "Low Stock": "bg-amber-100 text-amber-900 ring-amber-300",
+  "Near Expiry": "bg-orange-100 text-orange-900 ring-orange-300",
+  "Out of Stock": "bg-slate-100 text-slate-600 ring-slate-300",
+  Expired: "bg-red-100 text-red-800 ring-red-300",
 };
 
 export function formatDate(iso, { monthOnly = false } = {}) {
